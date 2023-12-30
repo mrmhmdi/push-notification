@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    {% block content %}{% endblock content %}
+
+    <div class="FCM-message"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
+    <script>
+        let messaging;
+        fetch('/get_firebase_conf')
+            .then(response => {
+                if (!response.ok) {
+                console.log("API no response");;
+                }
+                return response.json();
+            })
+            .then(data => {
+                firebase.initializeApp(data);
+                messaging = firebase.messaging()
+                
+                messaging.onMessage((payload) => {
+                    const messagesElement = document.querySelector('.FCM-message')
+                    const dataHeaderElement = document.createElement('h5')
+                    const dataElement = document.createElement('pre')
+                    dataElement.style = "overflow-x: hidden;"
+                    dataHeaderElement.textContent = "Message Received:"
+                    dataElement.textContent = JSON.stringify(payload, null, 2)
+                    messagesElement.appendChild(dataHeaderElement)
+                    messagesElement.appendChild(dataElement)
+                })
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    </script>
+    {% block script %}{% endblock script %}
+</body>
+
+</html>
