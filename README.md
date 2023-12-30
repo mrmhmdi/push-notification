@@ -19,7 +19,7 @@
 
 - In the Firebase console, navigate to `Service accounts` click on `Generate new private key` download the `serviceAccountKey.json` file, and replace the file in the root of the project.
 
-## Installation and run the app
+## Setting Up Virtual Environment and Installing Dependencies
 
 first create an enviroment for python and install requirments package:
 ```shell
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-# explanation
+# Overview of Project Files
 
 1.  <details>
     <summary>base.html</summary>
