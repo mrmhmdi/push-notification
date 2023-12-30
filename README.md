@@ -41,9 +41,7 @@ python main.py
 1.  <details>
     <summary>base.html</summary>
 
-    - Because we don't want to hardcode the Firebase config in the HTML, we need an API that allows us to obtain the necessary information for Firebase configuration.
-
-    - If a user is on our website and a notification arrives, we need to display that notification to the user on every page, and `onMessage` method is precisely designed to accomplish this.
+    If a user is on our website and a notification arrives, we need to display that notification to the user on every page, and `onMessage` method is precisely designed to accomplish this.
 
     </details>
 
